@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameFieldView: {fileID: 329639669}
-  tileGridSettings: {fileID: 11400000, guid: 39e958d9616ca074885d5c1b5efbd744, type: 2}
+  tileGridSettings: {fileID: 11400000, guid: 4ef7280df4ab3284396e55f091fbe168, type: 2}
 --- !u!1 &1093583553
 GameObject:
   m_ObjectHideFlags: 0
