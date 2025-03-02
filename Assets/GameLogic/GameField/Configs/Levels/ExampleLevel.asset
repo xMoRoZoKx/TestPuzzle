@@ -96,4 +96,4 @@ MonoBehaviour:
       rotate: 0
     - tile: {fileID: 11400000, guid: 742e7cc81d19d034bb7e30379f0e8ab2, type: 2}
       rotate: 0
-  timeForSolve: 450
+  timeForSolve: 45

@@ -3,14 +3,10 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Object), true, isFallback = false)]
-[CanEditMultipleObjects]
-public class ButtonEditor : Editor
+public class ButtonEditor 
 {
-    public override void OnInspectorGUI()
+    public void OnInspectorGUI(UnityEngine.Object[] targets)
     {
-        base.OnInspectorGUI();
-
         foreach (var target in targets)
         {
             var mis = target.GetType().GetMethods().Where(m => m.GetCustomAttributes().Any(a => a.GetType() == typeof(EditorButtonAttribute)));

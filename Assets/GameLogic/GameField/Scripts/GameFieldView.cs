@@ -7,7 +7,7 @@ public class GameFieldView : MonoBehaviour
 {
     [SerializeField] private TileView tileViewPrefab;
     [SerializeField] private float tileSize = 1f;
-    private TileView[,] generatedTiles; 
+    private TileView[,] generatedTiles;
 
     public void StartGame(PuzzleSolver solver, Action onGridChanged)
     {

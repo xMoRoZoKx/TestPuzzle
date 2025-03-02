@@ -16,7 +16,7 @@ public enum AudioType
     Music,
     SFX
 }
-public static class SoundsManager
+public static class AudioPlayer
 {
     private class SourceAndType
     {
@@ -24,7 +24,7 @@ public static class SoundsManager
         public AudioType type;
     }
     private static List<SourceAndType> sourcesAndTypes = new List<SourceAndType>();
-    private static int sourcesLinit = 100;
+    private static int sourcesLimit = 100;
     public static float musicVolume
     {
         get => GetVolume(nameof(musicVolume));
@@ -42,14 +42,14 @@ public static class SoundsManager
         return val == 0 ? 0.01f : val;
     }
     public static void SetSourcesLimit(int value)
-        => sourcesLinit = value;
+        => sourcesLimit = value;
     public static AudioSource PlayAudio(string clicpPatch, float volume = 1, bool loop = false, AudioType type = AudioType.SFX)
         => PlayAudio(LoadAudio(clicpPatch), volume, loop, type);
     public static AudioSource PlayAudio(AudioClip clip, float volume = 1, bool loop = false, AudioType type = AudioType.SFX)
     {
         sourcesAndTypes.RemoveAll(s => s.source == null);
         var sourceAndType = sourcesAndTypes.Find(s => !s.source.isPlaying);
-        if (sourceAndType == null && sourcesAndTypes.Count >= sourcesLinit)
+        if (sourceAndType == null && sourcesAndTypes.Count >= sourcesLimit)
         {
             Debug.Log("Wrong limit");
             sourceAndType = sourcesAndTypes[0];

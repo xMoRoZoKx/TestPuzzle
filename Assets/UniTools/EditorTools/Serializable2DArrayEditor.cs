@@ -3,15 +3,14 @@ using UnityEngine;
 using System;
 using System.Reflection;
 
-[CustomEditor(typeof(UnityEngine.ScriptableObject), true)]
-public class Serializable2DArrayEditor : Editor
+public class Serializable2DArrayEditor 
 {
-    private Vector2 scrollPosition; 
+    private Vector2 scrollPosition;
+    private UnityEngine.Object target;
 
-    public override void OnInspectorGUI()
+    public void OnInspectorGUI(UnityEngine.Object target)
     {
-        serializedObject.Update();
-        base.OnInspectorGUI(); // Отрисовка стандартного инспектора
+        this.target = target;
 
         Type targetType = target.GetType();
         FieldInfo[] fields = targetType.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
@@ -25,8 +24,6 @@ public class Serializable2DArrayEditor : Editor
                 DrawArrayEditor(field);
             }
         }
-
-        serializedObject.ApplyModifiedProperties();
     }
 
     private void DrawArrayEditor(FieldInfo field)
